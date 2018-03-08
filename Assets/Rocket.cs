@@ -20,6 +20,8 @@ public class Rocket : MonoBehaviour {
     [SerializeField] ParticleSystem deathParticle;
     [SerializeField] ParticleSystem successParticle;
 
+    bool collisionDisabled = false;
+
     enum State { Alive, Trancending, Dying}
     State state = State.Alive;
 
@@ -36,11 +38,29 @@ public class Rocket : MonoBehaviour {
             Rotate();
             Thrust(); 
         }
+
+        if (Debug.isDebugBuild)
+        {
+            RespondToDebugKeys();
+        }
+    }
+
+    private void RespondToDebugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            collisionDisabled = !collisionDisabled;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (state != State.Alive) { return; }
+        if (state != State.Alive || collisionDisabled) { return; }
 
         switch (collision.gameObject.tag)
         {
@@ -80,7 +100,18 @@ public class Rocket : MonoBehaviour {
 
     private void LoadNextLevel()
     {
-        SceneManager.LoadScene(1);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int currentNextLevel;
+        currentNextLevel = currentSceneIndex + 1;
+        if (currentNextLevel == SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            SceneManager.LoadScene(currentNextLevel);
+        }
+        
     }
 
     private void Rotate()

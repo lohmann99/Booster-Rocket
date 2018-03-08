@@ -23,8 +23,8 @@ GameObject:
   - component: {fileID: 65258411490313280}
   - component: {fileID: 23023657193677538}
   m_Layer: 0
-  m_Name: Obstacle
-  m_TagString: Untagged
+  m_Name: Start Pad
+  m_TagString: FRIENDLY
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1604978303758992}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.9, y: 3.85, z: 0}
+  m_LocalPosition: {x: -16.7, y: 2.8689466, z: 0}
   m_LocalScale: {x: 4.34, y: 0.48, z: 3.07}
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,7 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: daf48a2e450e95d47a128dbf077a7139, type: 2}
+  - {fileID: 2100000, guid: dfbfaec5462923343a6738128ff75f37, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
